@@ -20,7 +20,8 @@ private:
 
 public:
 
-    Cyclogram(std::vector<std::string> joints); //Конструктор, принимает вектор существующих степеней свободы
-    int addPoint(std::map<std::string, double> cords, time);
+    Cyclogram(std::vector<std::string> joints_list); //Конструктор, принимает вектор существующих степеней свободы
+    std::vector<std::string> getJoints();
+    int addPoint(std::map<std::string, double> cords, double time);
 
 };
