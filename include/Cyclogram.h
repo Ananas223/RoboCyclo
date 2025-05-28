@@ -16,7 +16,7 @@ private:
 
     std::vector<Point> points;
     std::vector<std::string> joints; //Вектор существующих степеней свободы
-    bool checkJoints(std::vector<std::string> joints_list); //Функция для проверки степени свободы на существование
+    bool checkJoints(std::map<std::string, double> cords); //Функция для проверки степени свободы на существование
     static bool comparePoints(const Point& a, const Point& b);
     void sortPoints(); //Функция для сортировки точек по времени
 

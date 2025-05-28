@@ -8,7 +8,11 @@ std::vector<std::string> Cyclogram::getJoints() {
     return joints;
 }
 
-bool Cyclogram::checkJoints(std::vector<std::string> joints_list) {
+bool Cyclogram::checkJoints(std::map<std::string, double> cords) {
+    std::vector<std::string> joints_list;
+    for(auto it = cords.begin(); it != cords.end(); ++it){
+        joints_list.push_back(it->first);
+    }
     return joints_list == joints;
 }
 
