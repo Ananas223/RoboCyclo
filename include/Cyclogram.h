@@ -15,13 +15,13 @@ private:
 
     std::vector<Point> points;
     std::vector<std::string> joints; //Вектор существующих степеней свободы
-    void checkJoints(); //Функция для проверки степени свободы на существование
+    bool checkJoints(std::vector<std::string> joints_list); //Функция для проверки степени свободы на существование
     void sortPoints(); //Функция для сортировки точек по времени
 
 public:
 
     Cyclogram(std::vector<std::string> joints_list); //Конструктор, принимает вектор существующих степеней свободы
     std::vector<std::string> getJoints();
-    int addPoint(std::map<std::string, double> cords, double time);
+    void addPoint(std::map<std::string, double> cords, double time);
 
 };
