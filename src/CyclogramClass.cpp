@@ -23,3 +23,15 @@ bool Cyclogram::comparePoints(const Point &a, const Point &b) {
 void Cyclogram::sortPoints() {
     std::sort(points.begin(), points.end(), comparePoints);
 }
+
+void Cyclogram::addPoint(std::map<std::string, double> cords, double time) {
+    if (!checkJoints(cords)){
+        throw std::invalid_argument("Incorrect joints!");
+    } else {
+        Point new_p;
+        new_p.time = time;
+        new_p.cords = cords;
+        points.push_back(new_p);
+        sortPoints();
+    }
+}
