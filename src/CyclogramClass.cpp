@@ -35,3 +35,21 @@ void Cyclogram::addPoint(std::map<std::string, double> cords, double time) {
         sortPoints();
     }
 }
+
+void Cyclogram::saveCSV(const std::string& file_name) {
+    std::ofstream out(file_name);
+    out << "time";
+    for(const auto& joint : joints){
+        out << "," << joint;
+    }
+    out << "\n";
+
+    for(const auto& point : points){
+        out << point.time << ",";
+        for(const auto& cord : point.cords){
+            out << cord.second << ",";
+        }
+        out << "\n";
+    }
+    out.close();
+}

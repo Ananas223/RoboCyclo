@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <stdexcept>
+#include <fstream>
 
 #pragma once
 
@@ -26,5 +27,6 @@ public:
     Cyclogram(std::vector<std::string> joints_list); //Конструктор, принимает вектор существующих степеней свободы
     std::vector<std::string> getJoints();
     void addPoint(std::map<std::string, double> cords, double time);
+    void saveCSV(const std::string& file_name);
 
 };
