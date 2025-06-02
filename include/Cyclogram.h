@@ -7,26 +7,59 @@
 
 #pragma once
 
-//Структура описывающая одну точку в циклограмме
+/*
+ * Структура, описывающая точку
+ * Содержит координаты каждой степени свободы в заданное время
+ */
 struct Point {
-    std::map<std::string, double> cords; //Словарь степень свободы робота -> ее координата
-    double time; //Время текущей точки
+    std::map<std::string, double> cords; // Словарь степень свободы робота -> ее координата
+    double time; // Время текущей точки
 };
 
 class Cyclogram {
 private:
 
-    std::vector<Point> points;
-    std::vector<std::string> joints; //Вектор существующих степеней свободы
-    bool checkJoints(std::map<std::string, double> cords); //Функция для проверки степени свободы на существование
+    std::vector<Point> points; // Вектор точек циклограммы
+    std::vector<std::string> joints; // Вектор существующих степеней свободы
+
+    /*
+     * Метод для проверки степеней свободы на существование
+     * Получает словарь степень свободы робота -> ее координата
+     */
+    bool checkJoints(std::map<std::string, double> cords);
+
+    /*
+     * Метод для сравнения двух точек по их времени
+     * Принимает две сравниваемые точки
+     * Используется для сортировки точек по возрастанию
+     */
     static bool comparePoints(const Point& a, const Point& b);
-    void sortPoints(); //Функция для сортировки точек по времени
+
+    // Метод для сортировки точек по возрастанию времени
+    void sortPoints();
 
 public:
 
-    Cyclogram(std::vector<std::string> joints_list); //Конструктор, принимает вектор существующих степеней свободы
+    /*
+     * Конструктор класса
+     * Принимает вектор существующих степеней свободы
+     */
+    Cyclogram(std::vector<std::string> joints_list);
+
+    // Метод возвращающий существующие степени свободы
     std::vector<std::string> getJoints();
+
+    /*
+     * Метод для добавления новой точки
+     * cords - словарь степень свободы робота -> ее текущая координата
+     * time - время новой точки
+     */
     void addPoint(std::map<std::string, double> cords, double time);
+
+    /*
+     * Метод для сохранения циклограммы в формате CSV
+     * Принимает имя файла для сохранения циклограммы
+     */
     void saveCSV(const std::string& file_name);
 
 };

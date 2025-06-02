@@ -9,7 +9,9 @@ std::vector<std::string> Cyclogram::getJoints() {
 }
 
 bool Cyclogram::checkJoints(std::map<std::string, double> cords) {
+    // Создается пустой список joints_list в который записываются степени свободы из словаря cords
     std::vector<std::string> joints_list;
+    // Цикл проходит по каждому элементу cords и добавляет его ключ в joints_list
     for(auto it = cords.begin(); it != cords.end(); ++it){
         joints_list.push_back(it->first);
     }
@@ -38,14 +40,18 @@ void Cyclogram::addPoint(std::map<std::string, double> cords, double time) {
 
 void Cyclogram::saveCSV(const std::string& file_name) {
     std::ofstream out(file_name);
+    // Создание первой строки таблицы
     out << "time";
     for(const auto& joint : joints){
         out << "," << joint;
     }
     out << "\n";
 
+    // Добавление остальных строк
     for(const auto& point : points){
+        // Запись текущего времени
         out << point.time << ",";
+        // Запись текущей координаты для каждой степени свободы
         for(const auto& cord : point.cords){
             out << cord.second << ",";
         }
