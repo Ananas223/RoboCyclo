@@ -56,6 +56,8 @@ public:
      */
     void addPoint(std::map<std::string, double> cords, double time);
 
+    void addPoint(Point new_p);
+
     /*
      * Метод для сохранения циклограммы в формате CSV
      * Принимает имя файла для сохранения циклограммы

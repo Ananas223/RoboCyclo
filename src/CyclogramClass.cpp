@@ -38,6 +38,15 @@ void Cyclogram::addPoint(std::map<std::string, double> cords, double time) {
     }
 }
 
+void Cyclogram::addPoint(Point new_p) {
+    if (!checkJoints(new_p.cords)) {
+        throw std::invalid_argument("Incorrect joints!");
+    } else {
+        points.push_back(new_p);
+        sortPoints();
+    }
+}
+
 void Cyclogram::saveCSV(const std::string& file_name) {
     std::ofstream out(file_name);
     // Создание первой строки таблицы
